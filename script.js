@@ -109,3 +109,133 @@ randomInsult; // ​​​​​У тебя глаз словно вонючая
 // Способ получше
 var randomInsult = ["У тебя", bodyPart, "словно", adjective, word + "!!!"].join(" ");
 randomInsult;
+
+// Доступ к значениям внутри объектов
+var cat = {
+    legs: 3,
+    name: "Гармония",
+    color: "Черепаховый"
+}
+console.log(cat["name"]);
+console.log(cat.name);
+
+var dog = {
+    name: "Оладушек",
+    age: 6,
+    color: "белый",
+    bark: "Гав тяф тяф!" // bark - лай
+}
+console.log(dog);
+
+var cat = {
+    name: "Гармония",
+    age: 8,
+    color: "Черепаховый"
+}
+console.log(cat);
+
+// Object.keys(); Возвращает массив всех ключей объекта 
+console.log(Object.keys(dog)); // [ 'name', 'age', 'color', 'bark' ]​​​​​
+console.log(Object.keys(cat)); // [ 'name', 'age', 'color' ]​​​​​
+
+// Добавление элементов объекта
+
+// Через кавычки
+var cat = {};
+cat["legs"] = 3;
+cat["name"] = "Гармония";
+cat["color"] = "Черепаховый";
+console.log(cat); // { legs: 3, name: 'Гармония', color: 'Черепаховый' }​​​​​
+                        // color: "Черепаховый"
+                        // legs: 3
+                        // name: "Гармония"
+
+// !!! Javascript хранит ключи объектов НЕ упорядочивая их
+
+// Через точку
+var cat = {};
+cat.legs = 3;
+cat.name = "Гармония";
+cat.color = "Черепаховый";
+console.log(cat);
+
+// Массивы объектов
+var dinosaurs = [
+    { name: "Тираннозавр рекс", period: "Верхнемеловой"},
+    { name: "Стегозавр", period: "Верхнеюрский"},
+    { name: "Платеозавр", period: "Триасовый"}
+];
+
+console.log(dinosaurs[0]); // name: 'Тираннозавр рекс', period: 'Верхнемеловой'
+console.log(dinosaurs[0]["name"]); // Тираннозавр рекс
+console.log(dinosaurs[1].period); // ​​​​​Верхнеюрский​​​​​
+
+// !!! Точечную нотацию можно использовать только с объектами, для массивов она не подходит
+
+// Массив друзей
+var anna = { name: "Анна", age: 11, luckynumbers: [2, 4, 8, 16] };
+var dave = { name: "Дэйв", age: 5, luckynumbers: [3, 9, 40] };
+var kate = { name: "Кейт", age: 9, luckynumbers: [1, 2, 3] };
+
+var friends = [anna, dave, kate];
+console.log(friends[1]); // { name: 'Дэйв', age: 5, luckynumbers: Array(3) }​​​​​
+                            // age: 5
+                            // luckynumbers: Array(3)
+                            //    0: 3
+                            //    1: 9
+                            //    2: 40
+                            //    length: 3
+
+                            // name: "Дэйв"
+
+console.log(friends[2].name); // Кейт
+console.log(friends[0].luckynumbers[1]); // 4  — Значение из массива, находящегося в объекте, который находится в массиве friends
+
+// Хранение информации о фильмах
+var movies = {
+    "В поисках Немо": {
+        releaseDate: 2003,
+        duration: 100,
+        actors: ["Альберт Брукс", "Эллен Дедженерес"],
+        format: "DVD"
+    },
+
+    "Звезные войны: Эпизод VI — Возвращение джедая": {
+        releaseDate: 1983,
+        duration: 134,
+        actors: ["Марк Хэмилл", "Харрисон Форд"],
+        format: "DVD"
+    },
+
+    "Гарри Поттер и Кубок огня": {
+        releaseDate: 2005,
+        duration: 157,
+        actors: ["Дэниел Рэдклифф", "Эмма Уотсон"],
+        format: "Blu-ray"
+    }
+}
+
+var findingNemo = movies["В поисках Немо"];
+console.log(findingNemo.duration); // 100
+console.log(findingNemo.format); // DVD
+
+// Создаем новый объект cars и добавляем его в movies с ключом "Тачки"
+var cars = {
+    releaseDate: 2006,
+    duration: 117,
+    actors: ["Оуэн Уилсон", "Бонни Хант"],
+    format: "Blu-ray"
+};
+movies["Тачки"] = cars; // или
+// movies.Тачки = cars;
+
+console.log(Object.keys(movies));
+// [ 'В поисках Немо', 'Звезные войны: Эпизод VI — Возвращение джедая',​​​​​ 'Гарри Поттер и Кубок огня',​​​​​'Тачки' ]​​​​​
+
+var myCrazyObject = {
+    "name": "Нелепый объект",
+    "some array": [7, 9, { purpose: "путаница", number: 123}, 3.3], // purpose — цель
+    "random animal": "Банановая акула"
+};
+console.log(myCrazyObject["some array"][2]["number"]);
+console.log(myCrazyObject["some array"][2].number);
